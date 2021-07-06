@@ -2,4 +2,4 @@
 Muito poder e pouco código.
 
 
-![miku chan](https://imgur.com/a/LwjurNo "xdxd")
+![miku chan](https://i.imgur.com/EGWVsxE.png "xdxd")
