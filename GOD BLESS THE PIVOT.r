@@ -68,7 +68,7 @@ TBM_SEX
 
 
 
-#populacao por sexo e faixa etária do AC centrada em 2019
+
 
 faixas_et <- read_xls("./projecoes_2018_populacao_2010_2060_20200406.xls", sheet = "AP",
                       range = "AP!A5:A25") %>%
@@ -137,7 +137,7 @@ obit_wide <- obit_sx_et %>% #transforma a ultima tabela em formato wide
   filter(!is.na(faixa_et))
 
 
-#2. populacao por M e F e grupo quinquenal
+
 
 #projeção da população inicial, obitos subtraídos ano a ano
 
@@ -165,7 +165,7 @@ pop_quinq <- pop_ac_sx_etaria%>%
   mutate(faixa_et = faixas_quinq) %>%
   rename("pop_masc" = M_2019, "pop_fem" = F_2019)
 
-#3. calculo das colunas nMx
+
 
 nMx <- obit_wide %>%
   filter(!is.na(faixa_et))%>% #removendo a linha com faixa etária NA
@@ -202,15 +202,13 @@ rm(pop_ac_sx_etaria)
 
 #########################################################################################################
 
-#b)selecionar as mortes pr dia.
+
 
 sim_consolidado$ANO_OBITO <- sim_consolidado$DTOBITO %>% str_extract('(?<=[0-9]{4})[0-9]{4}')
 sinasc_consolidado$ANO_NASC <- sinasc_consolidado$DTNASC %>% str_extract('(?<=[0-9]{4})[0-9]{4}')
 
-paleta <- brewer.pal(n = 10, name = "Set3")
 
-## Questão 3: Mortalidade
-### b) Calcule a TMI, utilizando o número médio de óbitos ocorridos entre 2018 e 2020 e o número de nascimentos de 2019. Calcule os indicadores: taxa de mortalidade neonatal, neonatal precoce, neonatal tardia, posneonatal. Agregando a informação sobre óbitos fetais para os mesmos anos, calcule a taxa de mortalidade perinatal.
+
 
 sim_b <- sim_consolidado %>% filter(ANO_OBITO >=2018  & ANO_OBITO<=2020)
 
